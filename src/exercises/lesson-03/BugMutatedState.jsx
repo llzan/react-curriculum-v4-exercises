@@ -10,11 +10,10 @@
 
 import { useState } from 'react';
 export default function BugMutatedState() {
-  let [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   function handleAdd() {
-    count++;
-    setCount(count);
+    setCount(count + 1); // This line is fine, but if we were to mutate the state directly (e.g., count++), it would cause issues. Always use the setter function to update state.
   }
 
   return (
@@ -26,4 +25,4 @@ export default function BugMutatedState() {
 }
 
 // Explanation:
-// (Write your explanation here)
+// At first glance, the state update seems fine. However, if we were to directly mutate the state (e.g., using count++), it would not trigger a re-render and cause unexpected behavior.

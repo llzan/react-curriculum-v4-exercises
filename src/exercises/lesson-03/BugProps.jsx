@@ -12,11 +12,13 @@
   Use the commented "Explanation" section at the bottom of this lesson's components.
 */
 
+import { useState } from 'react';
+
 export default function BugProps({ name = 'friend' }) {
-  let message = 'Hello, ' + name;
+  const [message, setMessage] = useState('Hello, ' + name);
 
   function handleChange() {
-    message = 'Hi, ' + name + '!';
+    setMessage('Hi, ' + name + '!');
   }
 
   return (
@@ -28,4 +30,5 @@ export default function BugProps({ name = 'friend' }) {
 }
 
 // Explanation:
-// (Write your explanation here)
+// The issue was that when I clicked the button, the message was not updating because it was being stored in a state variable that React was not tracking. By using the useState hook to manage the message state, I ensured that React would re-render the component whenever the message changed, allowing the UI to update correctly.
+// I also passed the name prop to the component and used it in the message, so that the greeting would reflect the correct name when the button was clicked.
