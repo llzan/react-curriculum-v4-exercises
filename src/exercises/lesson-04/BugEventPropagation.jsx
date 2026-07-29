@@ -10,6 +10,11 @@ export default function BugEventPropagation() {
     alert('Button Clicked ✅');
   }
 
+  function handleInnerClick(event) {
+    event.stopPropagation();
+    alert('Button Clicked ✅');
+  }
+
   return (
     <>
       <h2>Stopping Event Propagation</h2>
